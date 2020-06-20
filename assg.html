@@ -1,282 +1,291 @@
- <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body {
-                margin: 0;
-                font-family: "Lato", sans-serif;
-            }
+<head>
+    <meta name=" viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
+    </script>
 
-            .header {
-                position: sticky;
-                top: 0;
-            }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Lato", sans-serif;
+        }
 
+        .header {
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar {
+            margin: 0;
+            top: 52px;
+            padding: 0;
+            width: 59px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        @media screen and (max-width: 700px) {
             .sidebar {
-                margin: 0;
-                top: 47px;
-                padding: 0;
-                width: 59px;
-                background-color: #f1f1f1;
-                position: fixed;
-                height: 100%;
-                overflow: auto;
+                width: 100%;
+                height: auto;
+                position: relative;
             }
 
             .sidebar a {
-                display: block;
-                color: black;
-                padding: 16px;
-                text-decoration: none;
+                float: left;
             }
 
-            .sidebar a.active {
-                background-color: #4CAF50;
-                color: white;
+            div.content {
+                margin-left: 0;
             }
+        }
 
-            .sidebar a:hover:not(.active) {
-                background-color: #555;
-                color: white;
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
             }
+        }
 
-            @media screen and (max-width: 700px) {
-                .sidebar {
-                    width: 100%;
-                    height: auto;
-                    position: relative;
-                }
+        #check {
+            display: none;
+        }
 
-                .sidebar a {
-                    float: left;
-                }
+        label #btn {
+            position: absolute;
+            cursor: pointer;
+            background: blue;
+            border-radius: 3px;
+        }
 
-                div.content {
-                    margin-left: 0;
-                }
-            }
+        label #cancel {
+            position: absolute;
+            cursor: pointer;
+            background: #042331;
+            border-radius: 3px;
+        }
 
-            @media screen and (max-width: 400px) {
-                .sidebar a {
-                    text-align: center;
-                    float: none;
-                }
-            }
+        label #btn {
+            left: 0;
+            top: 0;
+            font-size: 40px;
+            color: white;
+            padding: 6px 12px;
+            transition: all .5s;
 
-            #check {
-                display: none;
-            }
+        }
 
-            label #btn {
-                position: absolute;
-                cursor: pointer;
-                background: blue;
-                border-radius: 3px;
-            }
+        label #cancel {
+            z-index: 1111;
+            left: -195px;
+            top: 40px;
+            font-size: 30px;
+            color: #0a5275;
+            padding: 4px 9px;
+            transition: all .5s ease;
+        }
 
-            label #cancel {
-                position: absolute;
-                cursor: pointer;
-                background: #042331;
-                border-radius: 3px;
-            }
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            margin: 10px;
+        }
 
-            label #btn {
-                left: 0;
-                top: 0;
-                font-size: 40px;
-                color: white;
-                padding: 6px 12px;
-                transition: all .5s;
+        table {
+            width: 55%;
+            height: 180px;
+            overflow-y: scroll;
+            display: block;
 
-            }
+        }
 
-            label #cancel {
-                z-index: 1111;
-                left: -195px;
-                top: 40px;
-                font-size: 30px;
-                color: #0a5275;
-                padding: 4px 9px;
-                transition: all .5s ease;
-            }
+        th {
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
 
-            table,
-            td,
-            th {
-                border: 1px solid black;
-                margin: 10px;
-            }
+        th,
+        td {
+            padding: 5px 105px 5px 5px;
 
-            table {
-                width: 55%;
-                height: 180px;
-                overflow-y:scroll;
-                display:block;
-                
-            }
-
-            th {
-                background-color: rgba(0, 0, 0, 0.3);
-                text-align: left;
-            }
-
-            th,
-            td {
-                padding: 5px 105px 5px 5px;
-
-            }
-
-        </style>
-        <script>
+        }
+    </style>
+    
+    <script>
         function Add_user() {
             alert("SUCCESFULLY ADDED!!");
         }
     </script>
-    </head>
+</head>
 
-    <body>
-        <div class="header bg-light" style="height: 47px">
-            <input type="checkbox" id="check">
-            <label for="check">
-                <i class="fas fa-bars" id="btn"></i>
-                <i class="fas fa-times" id="cancel"></i>
-            </label>
-            <center>
-                <img src="company_logo.png" height="47px" width="550px">
-                <i class="fa fa-user-circle fa-fw fa-2x" style="float: right; margin-right: 20px"></i>
+<body>
+    <div class="header bg-light" style="height: 52px">
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <center>
+            <img src="company_logo.png" height="52px" width="550px" style="margin-top: -18px">
+            <i class="fa fa-user-circle fa-fw fa-2x" style="float: right; margin-right: 20px"></i>
 
-                <p style="float: right; margin-right: auto">
-                    <b style="font-family: sans-serif; font-size: 15">RENEE MCKELVEY</b>
-                    <br>
-                    Account Settings
-                </p>
-            </center>
+            <p style="float: right; margin-right: auto">
+                <b style="font-family: sans-serif; font-size: 15">RENEE MCKELVEY</b>
+                <br>
+                Account Settings
+            </p>
+        </center>
+    </div>
+
+    <div class="sidebar">
+        <a href="#"><i class="fa fa-search fa-fw fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-home fa-fw fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-line-chart fa-fw fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fas fa-user-friends fa-fw fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fas fa-cog fa-fw fa-2x" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="container" style="margin: 50px; padding: 2%">
+
+        <h2 style="font-family: sans-serif; color: grey">User List</h2>
+        <div class="input-group" style="width: 210px; border-radius: 10px">
+            <span class="input-group-addon"> <a class="glyphicon glyphicon-search"></a></span>
+            <input type="text" name="name" placeholder="Search">
         </div>
 
-        <div class="sidebar">            
-            <a href="#"><i class="fa fa-search fa-fw fa-2x" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-home fa-fw fa-2x" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-line-chart fa-fw fa-2x" aria-hidden="true"></i></a>
-            <a href="#"><i class="fas fa-user-friends fa-fw fa-2x" aria-hidden="true"></i></a>
-            <a href="#"><i class="fas fa-cog fa-fw fa-2x" aria-hidden="true"></i></a>
-        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Ada Lovelace</td>
+                <td>ADmin</td>
+                <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
+            </tr>
+            <tr>
+                <td>Grace Hopper</td>
+                <td>Developer</td>
+                <td><i class="fa fa-pencil " style="font-size:24px"></i></td>
+            </tr>
+            <tr>
+                <td>Margaret Hamilton</td>
+                <td>QA</td>
+                <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
+            </tr>
+            <tr>
+                <td>Joan Clarke</td>
+                <td>Manager</td>
+                <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
+            </tr>
 
-        <div class="container" style="margin: 50px; padding: 2%">
+        </table>
+    </div>
 
-            <h2 style="font-family: sans-serif; color: grey">User List</h2>
-            <div class="input-group" style="width: 210px; border-radius: 10px">
-                <span class="input-group-addon"> <a class="glyphicon glyphicon-search"></a></span>
-                <input type="text" name="name" placeholder="Search" >
-            </div>
+    <div class="container" style="margin: 50px; padding: 2%">
+        <form>
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2 style="font-family: sans-serif; color: grey">New User Details</h2>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" placeholder="Username" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
 
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-                <tr>
-                    <td>Ada Lovelace</td>
-                    <td>ADmin</td>
-                    <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
-                </tr>
-                <tr>
-                    <td>Grace Hopper</td>
-                    <td>Developer</td>
-                    <td><i class="fa fa-pencil " style="font-size:24px"></i></td>
-                </tr>
-                <tr>
-                    <td>Margaret Hamilton</td>
-                    <td>QA</td>
-                    <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
-                </tr>
-                <tr>
-                    <td>Joan Clarke</td>
-                    <td>Manager</td>
-                    <td><i class="fa fa-pencil" style="font-size:24px"></i></td>
-                </tr>
-                
-            </table>
-        </div>
-
-        <div class="container" style="margin: 50px; padding: 2%">
-            <form>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h2 style="font-family: sans-serif; color: grey">New User Details</h2>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" placeholder="Username" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
-
-                            </div>
-                            <br><br>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" placeholder="Email" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                            </div>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" placeholder="First Name" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
-
-                            </div>
-                            <br><br>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" placeholder="Last Name" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <select class="form-control" style="padding: 3%; opacity: 0.7; border: 2px solid silver" name="Role" required="true">
-                                    <option value="0">Role</option>
-                                    <option value="1">ADmin</option>
-                                    <option value="2">Developer</option>
-                                    <option value="3">QA</option>
-                                    <option value="4">Manager</option>
-                                </select>
-                                <br>
-                                <input type="checkbox" checked> Send email confirmation
-                            </div>
-                            <br>
-                            <div class="col-lg-6">
-
-                            </div>
-
+                        <br><br>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" placeholder="Email" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <h2 style="font-family: sans-serif; color: grey">Profile Picture</h2>
-                        <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" placeholder="First Name" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
 
-                        <p><input type="file" accept="image/jpg, image/png" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
+                        </div>
+                        <br><br>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" placeholder="Last Name" style="padding: 3%; opacity: 0.7; border: 2px solid silver" required="true" pattern="^[a-zA-Z0-9]+$">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <select class="form-control" style="padding: 3%; opacity: 0.7; border: 2px solid silver" name="Role" required="true">
+                                <option value="0">Role</option>
+                                <option value="1">ADmin</option>
+                                <option value="2">Developer</option>
+                                <option value="3">QA</option>
+                                <option value="4">Manager</option>
+                            </select>
+                            <br>
+                            <input type="checkbox" checked> Send email confirmation
+                        </div>
+                        <br>
+                        <div class="col-lg-6">
 
-                        <p><img id="output" height="200" width="200" /></p>
-                        <a class="text-center bg-secondary form-control"><label for="file" style="cursor: pointer">Select Image</label></a>
-                        <script>
-                            var loadFile = function(event) {
-                                var image = document.getElementById('output');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                            };
-                        </script>
+                        </div>
+
                     </div>
                 </div>
-                <hr>
-                <button type="submit" onclick="Add_user()" class="btn btn-primary" style="margin: 10px">Add User</button>
-                <button type="submit" onclick="Cancel()" class="btn btn-warning" style="margin: 10px">Cancel</button>
-            </form>
-        </div>
+                <div class="col-sm-4">
+                    <h2 style="font-family: sans-serif; color: grey">Profile Picture</h2>
+                    <hr>
 
-    </body>
+                    <p><input type="file" accept="image/jpg, image/png" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
 
-    </html>
+                    <p><img id="output" height="200" width="200" /></p>
+                    <a class="text-center bg-secondary form-control"><label for="file" style="cursor: pointer">Select Image</label></a>
+                    <script>
+                        var loadFile = function(event) {
+                            var image = document.getElementById('output');
+                            image.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                    </script>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" onclick="Add_user()" class="btn btn-primary" style="margin: 10px">Add User</button>
+            <button type="submit" onclick="Cancel()" class="btn btn-warning" style="margin: 10px">Cancel</button>
+        </form>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+
 </html>
